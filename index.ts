@@ -3,6 +3,19 @@ import  axios  from 'axios'
 
 const app :express.Application = express();
 
+app.get("",(req:express.Request,res:express.Response)=>{
+     let html =`
+     <h1>How to use </h1>
+     
+     <code>  /{name_of_country}</code><br> ---> will return a country with that name
+     let matches:string[] = ["malta","ger","fr","eng","mor","ha","ita","den"];<br>
+     <code>  /match/{name_of_country}</code> --> will return counties that match the matches array above
+     
+     
+     `
+    res.send(html)
+     
+});
 app.get("/:name",(req:express.Request,res:express.Response)=>{
      
     axios.get(`https://restcountries.com/v3.1/name/${req.params.name}?fullText=true`)
